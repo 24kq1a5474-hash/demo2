@@ -1,0 +1,261 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+body {
+  background-color: #111;
+  background-image: radial-gradient(#222 1px, transparent 1px);
+  background-size: 16px 16px;
+  color: #fff;
+  font-family: 'Press Start 2P', monospace, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 10px;
+}
+
+.arcade-wrapper {
+  background: #1e1e24;
+  border: 4px solid #e52521;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(229, 37, 33, 0.3);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 680px;
+  width: 100%;
+}
+
+.game-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: #000;
+  border: 2px solid #444;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  font-size: 11px;
+}
+
+.hud-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.hud-label {
+  color: #f7d51d;
+}
+
+.hud-value {
+  color: #fff;
+}
+
+.canvas-container {
+  position: relative;
+  width: 640px;
+  height: 448px;
+  background-color: #5c94fc;
+  border: 3px solid #000;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -webkit-crisp-edges;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  display: block;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 24px;
+  z-index: 10;
+  transition: opacity 0.3s;
+}
+
+.overlay.hidden {
+  display: none;
+}
+
+.title-logo {
+  font-size: 28px;
+  color: #e52521;
+  text-shadow: 4px 4px 0 #fbd000, 6px 6px 0 #000;
+  margin-bottom: 8px;
+  letter-spacing: 2px;
+}
+
+.subtitle {
+  font-size: 10px;
+  color: #00e04b;
+  margin-bottom: 24px;
+  letter-spacing: 1px;
+}
+
+.retro-btn {
+  background: #e52521;
+  color: #fff;
+  border: 3px solid #fff;
+  padding: 12px 20px;
+  font-family: inherit;
+  font-size: 11px;
+  cursor: pointer;
+  border-radius: 4px;
+  box-shadow: 0 4px 0 #8b0000;
+  margin: 16px 0;
+  animation: pulse 1.5s infinite;
+  transition: transform 0.1s;
+}
+
+.retro-btn:hover {
+  background: #ff3a35;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #8b0000;
+}
+
+.retro-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #8b0000;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.75; }
+}
+
+.controls-guide {
+  background: #111;
+  border: 2px dashed #666;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 8.5px;
+  line-height: 1.8;
+  color: #bbb;
+  text-align: left;
+}
+
+.controls-guide strong {
+  color: #f7d51d;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.game-over-title {
+  color: #e52521;
+  font-size: 28px;
+  text-shadow: 3px 3px 0 #000;
+  margin-bottom: 16px;
+}
+
+.victory-title {
+  color: #fbd000;
+  font-size: 24px;
+  text-shadow: 3px 3px 0 #e52521;
+  margin-bottom: 12px;
+}
+
+.congrats-text {
+  color: #00e04b;
+  font-size: 12px;
+  margin-bottom: 14px;
+}
+
+/* Mobile Touch Controls */
+.mobile-controls {
+  display: none;
+  width: 100%;
+  margin-top: 14px;
+  justify-content: space-between;
+  padding: 4px 10px;
+}
+
+@media (max-width: 700px) {
+  .canvas-container {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 640 / 448;
+  }
+  .mobile-controls {
+    display: flex;
+  }
+  .arcade-wrapper {
+    padding: 10px;
+  }
+  .game-header {
+    font-size: 8px;
+  }
+}
+
+.touch-btn {
+  background: #333;
+  color: white;
+  border: 2px solid #555;
+  font-family: inherit;
+  font-size: 14px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: manipulation;
+}
+
+.touch-btn:active {
+  background: #666;
+}
+
+.dpad {
+  display: flex;
+  gap: 12px;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.action-a {
+  background: #e52521;
+  border-color: #fff;
+  font-size: 9px;
+}
+
+.action-b {
+  background: #0077da;
+  border-color: #fff;
+  font-size: 9px;
+}
+
+.game-footer {
+  margin-top: 12px;
+  font-size: 7px;
+  color: #777;
+  text-align: center;
+}

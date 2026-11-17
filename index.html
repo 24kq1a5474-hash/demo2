@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Super Mario Bros - Web Edition</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="arcade-wrapper">
+    <header class="game-header">
+      <div class="hud-item">
+        <span class="hud-label">MARIO</span>
+        <span id="score-display" class="hud-value">000000</span>
+      </div>
+      <div class="hud-item">
+        <span class="hud-label">COINS</span>
+        <span id="coins-display" class="hud-value">🪙 x00</span>
+      </div>
+      <div class="hud-item">
+        <span class="hud-label">WORLD</span>
+        <span class="hud-value">1-1</span>
+      </div>
+      <div class="hud-item">
+        <span class="hud-label">TIME</span>
+        <span id="time-display" class="hud-value">400</span>
+      </div>
+      <div class="hud-item">
+        <span class="hud-label">LIVES</span>
+        <span id="lives-display" class="hud-value">❤️ x3</span>
+      </div>
+    </header>
+
+    <div class="canvas-container">
+      <canvas id="gameCanvas" width="640" height="448"></canvas>
+      
+      <div id="start-overlay" class="overlay active">
+        <div class="title-logo">SUPER MARIO</div>
+        <p class="subtitle">HTML5 RETRO PLATFORMER</p>
+        <button id="start-btn" class="retro-btn">PRESS START / CLICK TO PLAY</button>
+        <div class="controls-guide">
+          <p><strong>Controls:</strong></p>
+          <p>⬅️ / ➡️ or [A] / [D] : Move Left & Right</p>
+          <p>⬆️ / [W] / [SPACE] : Jump (Hold for higher jump)</p>
+          <p>[SHIFT] : Run / Sprint</p>
+          <p>[M] : Toggle Sound / Music</p>
+        </div>
+      </div>
+
+      <div id="game-over-overlay" class="overlay hidden">
+        <h1 class="game-over-title">GAME OVER</h1>
+        <p id="game-over-score">Score: 0</p>
+        <button id="restart-btn" class="retro-btn">TRY AGAIN</button>
+      </div>
+
+      <div id="victory-overlay" class="overlay hidden">
+        <h1 class="victory-title">STAGE CLEAR!</h1>
+        <p class="congrats-text">THANK YOU MARIO!</p>
+        <p id="victory-score">Final Score: 0</p>
+        <button id="victory-restart-btn" class="retro-btn">PLAY AGAIN</button>
+      </div>
+    </div>
+
+    <!-- Mobile Touch Controls -->
+    <div class="mobile-controls">
+      <div class="dpad">
+        <button id="btn-left" class="touch-btn">◀</button>
+        <button id="btn-right" class="touch-btn">▶</button>
+      </div>
+      <div class="action-buttons">
+        <button id="btn-run" class="touch-btn action-b">B (Run)</button>
+        <button id="btn-jump" class="touch-btn action-a">A (Jump)</button>
+      </div>
+    </div>
+
+    <footer class="game-footer">
+      <span>Classic 8-bit sound generated via Web Audio API &bull; No downloads or plugins required</span>
+    </footer>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
